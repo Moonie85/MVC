@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Academy2.Models
+namespace Academy.Models
 {
     public class Human
     {

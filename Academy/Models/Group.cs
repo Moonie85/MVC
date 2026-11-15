@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace Academy2.Models
+namespace Academy.Models
 {
     public class Group
     {
@@ -28,7 +28,7 @@ namespace Academy2.Models
 
         //Navigation properties:
         public Direction Direction { get; set; }
-        public ICollection<Student> Students { get; set; }
+        public ICollection<Academy.Models.Student> Students { get; set; }
 
     }
 }
