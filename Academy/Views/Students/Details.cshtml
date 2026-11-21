@@ -1,0 +1,101 @@
+@model Academy.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <!-- Открываем единый список <dl class="row"> для всех полей -->
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.full_name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.full_name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.group)
+        </dt>
+        <dd class="col-sm-10">
+            <!-- Выводим название группы, если подгружено, иначе ID -->
+            @(Model.Group != null ? Model.Group.group_name : Model.group)
+        </dd>
+
+        @* Закомментированные вами поля оставляем нетронутыми:
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.middle_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.middle_name)
+        </dd> 
+        *@
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.birth_date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.birth_date)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        @* 
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.phone)
+        </dd> 
+        *@
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+        <dd class="col-sm-10">
+            <!-- Используем Model.photo (с большой буквы), так как это страница одного студента -->
+            @if (Model?.photo != null && Model.photo.Length > 0)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.photo)"
+                     alt="Фото студента"
+                     style="max-width: 200px; border-radius: 8px;" />
+            }
+            else
+            {
+                <span>Фото отсутствует</span>
+            }
+        </dd>
+    </dl> <!-- Закрываем список <dl> один раз в самом конце -->
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.stud_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
